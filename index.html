@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+    
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="static/jquery-3.2.1.min.js"></script>
+    <script src="static/tether.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <script src="static/score.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Scoreboard</h1>
+      </div>
+      <p class="lead"></p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Total</th>
+            <th scope="col">Score 1</th>
+            <th scope="col">Score 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span id="name-1"></span></th>
+            <td><span id="score-1"></span></td>
+            <th scope="col"><button type="button" class="btn btn-outline-success" onclick="addScore(1,1)">+<span class="score-val-1"></span></button>
+            <button type="button" class="btn btn-outline-warning" onclick="subtractScore(1,1)">-<span class="score-val-1"></span></button></th>
+            <th scope="col"><button type="button" class="btn btn-outline-success" onclick="addScore(1,2)">+<span class="score-val-2"></span></button>
+            <button type="button" class="btn btn-outline-warning" onclick="subtractScore(1,2)">-<span class="score-val-2"></span></button></th>
+          </tr>
+          <tr>
+            <th scope="row"><span id="name-2"></span></th>
+            <td><span id="score-2"></span></td>
+            <th scope="col"><button type="button" class="btn btn-outline-success" onclick="addScore(2,1)">+<span class="score-val-1"></span></button>
+            <button type="button" class="btn btn-outline-warning" onclick="subtractScore(2,1)">-<span class="score-val-1"></span></button></th>
+            <th scope="col"><button type="button" class="btn btn-outline-success" onclick="addScore(2,2)">+<span class="score-val-2"></span></button>
+            <button type="button" class="btn btn-outline-warning" onclick="subtractScore(2,2)">-<span class="score-val-2"></span></button></th>
+          </tr>
+          <tr>
+            <th scope="row"><span id="name-3"></span></th>
+            <td><span id="score-3"></span></td>
+            <th scope="col"><button type="button" class="btn btn-outline-success" onclick="addScore(3,1)">+<span class="score-val-1"></span></button>
+            <button type="button" class="btn btn-outline-warning" onclick="subtractScore(3,1)">-<span class="score-val-1"></span></button></th>
+            <th scope="col"><button type="button" class="btn btn-outline-success" onclick="addScore(3,2)">+<span class="score-val-2"></span></button>
+            <button type="button" class="btn btn-outline-warning" onclick="subtractScore(3,2)">-<span class="score-val-2"></span></button></th>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Settings</h3>
+      <hr>
+
+      <!-- setScore -->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="input-group">
+            <input id="score-setter-1" type="text" class="form-control" placeholder="Score 1...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" onclick="setScore(1)">Set</button>
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="input-group">
+            <input id="score-setter-2" type="text" class="form-control" placeholder="Score 2...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" onclick="setScore(2)">Set</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!-- set player names -->
+      <div class="row">
+
+        <!-- setPlayer(1) -->
+        <div class="col-lg-4">
+          <div class="input-group">
+            <input id="name-setter-1" type="text" class="form-control" placeholder="Name 1...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" onclick="setPlayer(1)">Set</button>
+            </span>
+          </div>
+        </div>
+        <!-- setPlayer(2) -->
+        <div class="col-lg-4">
+          <div class="input-group">
+            <input id="name-setter-2" type="text" class="form-control" placeholder="Name 2...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" onclick="setPlayer(2)">Set</button>
+            </span>
+          </div>
+        </div>
+        <!-- setPlayer(3) -->
+        <div class="col-lg-4">
+          <div class="input-group">
+            <input id="name-setter-3" type="text" class="form-control" placeholder="Name 3...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" onclick="setPlayer(3)">Set</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <audio id="audio-correct" src="static/ding.mp3"></audio>
+      <audio id="audio-incorrect" src="static/buzz.mp3"></audio>
+    </div>
+  </body>
+</html>
