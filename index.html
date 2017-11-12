@@ -20,7 +20,7 @@
       <div class="page-header">
         <h1>Scoreboard</h1>
       </div>
-      <p class="lead"></p>
+      <br>
 
       <table class="table">
         <thead>
@@ -58,9 +58,31 @@
           </tr>
         </tbody>
       </table>
-
-      <h3>Settings</h3>
       <hr>
+      <p class="lead">
+        Time remaining: <b><span id="timer-length">0</span></b> seconds
+        <br><br>
+        <button id="start-timer" type="button" class="btn btn-outline-primary" onclick="startTimer()">Start</button>
+        <button id="reset-timer" type="button" class="btn btn-outline-info" onclick="resetTimer()">Reset</button>
+      </p>
+
+      <br>
+      <hr>
+      <h3>Settings</h3>
+      <br>
+
+      <!-- setTimer -->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="input-group">
+            <input id="timer-setter" type="text" class="form-control" placeholder="Timer length...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" onclick="setTimer()">Set</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <br>
 
       <!-- setScore -->
       <div class="row">
@@ -115,8 +137,9 @@
         </div>
       </div>
 
-      <audio id="audio-correct" src="static/ding.mp3"></audio>
-      <audio id="audio-incorrect" src="static/buzz.mp3"></audio>
+      <audio id="audio-correct" src="sounds/ding.mp3"></audio>
+      <audio id="audio-incorrect" src="sounds/buzz.mp3"></audio>
+      <audio id="time-up" src="sounds/timeup.mp3"></audio>
     </div>
   </body>
 </html>

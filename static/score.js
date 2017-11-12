@@ -1,10 +1,69 @@
 
 var names = ['Alex', 'John', 'Jay'];
 var scores = [];
-var scoreVal1 = 1;
+var timerValSeconds = 60;
+var scoreVal1 = 5;
 var scoreVal2 = 1;
 var audioCorrect;
 var audioIncorrect;
+var timerIsOn = false;
+
+var timerStart;
+var timerCount = 0;
+
+function doTimer(resolution, oninstance, oncomplete)
+{
+    var steps = (timerValSeconds / 100) * (resolution / 10),
+        speed = timerValSeconds / steps;
+
+    function instance()
+    {
+        if(timerCount++ == steps || timerCount >= timerValSeconds)
+        {
+            oncomplete(steps, timerCount);
+        }
+        else
+        {
+            oninstance(steps, timerCount);
+
+            var diff = (new Date().getTime() - timerStart) - (timerCount * speed);
+            window.setTimeout(instance, (speed - diff));
+        }
+    }
+    window.setTimeout(instance, speed);
+}
+
+function startTimer(){
+	timerIsOn = true;
+	console.log('Timer started.');
+
+	timerStart = new Date().getTime();
+	timerCount = 0;
+
+	doTimer(1, function(steps, count)
+		{
+			if (timerIsOn) {
+				$('#timer-length').html(timerValSeconds - count);
+			} else {
+				resetTimer();
+			}
+		}, function() {
+			timeIsUp();
+		});
+}
+
+function timeIsUp(){
+	console.log('Time up!');
+	resetTimer();
+	timeUp.currentTime = 0;
+	timeUp.play();
+}
+
+function resetTimer(){
+	timerIsOn = false;
+	timerCount = 0;
+	$('#timer-length').html(timerValSeconds);
+}
 
 function playCorrect(){
 	audioIncorrect.pause();
@@ -34,6 +93,11 @@ function subtractScore(ind, sind){
 		updateScore(ind, -scoreVal2);
 	}
 	playIncorrect();
+}
+
+function setTimer(){
+	timerValSeconds = 60*$('#timer-setter').val();
+	$('#timer-length').html(timerValSeconds);
 }
 
 function setScore(sind){
@@ -77,12 +141,14 @@ function initScores(){
 function initSounds(){
 	audioCorrect = document.getElementById("audio-correct");
 	audioIncorrect = document.getElementById("audio-incorrect");
+	timeUp = document.getElementById("time-up");
 }
 
 function init(){
 	initNames();
 	initScores();
 	initSounds();
+	$('#timer-length').html(timerValSeconds);
 }
 
 $(document).ready(function(){
